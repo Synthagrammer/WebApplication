@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testing development skills</title>
+
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="styles/solarsim-map.css">
+
+</head>
+
+<body>
+	<div class="header">
+		<div class="container">
+			<div class="logo">
+				<h1>Spectrafy</h1>
+			</div>
+			<div class="nav">
+				<ul>
+					<li><a href="http://spectrafy.com/products/solarsim-d2">Products</li>
+					<li><a href="http://spectrafy.com/about-us">About</li>
+					<li><a href="http://spectrafy.com/category/news">News</a></li>
+					<li><a href="http://spectrafy.com/careers">News</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="container">
+			<h2>Spectral map of Canada</h2>
+			<div id="map"></div>
+		    <script>
+		      function initMap() {
+		        var ottawa = {lat: 45.4215, lng: -75.697};
+		        var pei = {lat: 45.2382, lng: -63.131};
+		        var toronto = {lat: 43.653, lng: -79.3832};
+		        var cabridgebay = {lat: 69.116, lng: -105.059};
+		        var quebec = {lat: 45.476, lng: -75.7013};
+		        var bc = {lat: 48.782, lng: -123.164};
+		        var calgary = {lat: 51.048, lng: -114.070};
+
+		        var map = new google.maps.Map(document.getElementById('map'), {
+		          zoom: 3,
+		          center: {lat:59, lng:-90}
+		        });
+
+		        var marker = new google.maps.Marker({
+		          animation: google.maps.Animation.DROP,
+		          label:"Ottawa, Ontario",
+		          position: ottawa,		    
+		          map: map
+		        });
+		        var marker = new google.maps.Marker({
+		        	animation: google.maps.Animation.DROP,
+		          	position: pei,
+		          	map: map
+		        });
+		        var marker = new google.maps.Marker({
+		          animation: google.maps.Animation.DROP,
+		          position: toronto,
+		          map: map
+		        });
+		        var marker = new google.maps.Marker({
+		          animation: google.maps.Animation.DROP,
+		          position: cabridgebay,
+		          map: map
+		        });
+		        var marker = new google.maps.Marker({
+		          animation: google.maps.Animation.DROP,
+		          position: quebec,
+		          map: map
+		        });
+		        var marker = new google.maps.Marker({
+		          animation: google.maps.Animation.DROP,
+		          position: bc,
+		          map: map
+		        });
+		        var marker = new google.maps.Marker({
+		          animation: google.maps.Animation.DROP,
+		          position: calgary,
+		          map: map
+		        });
+		        
+		      }
+		    </script>
+		    <script async defer
+		    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3EsKYUYTRfsEBGOi5CiAjHFhCmp1oN04&callback=initMap">
+		    </script>
+		</div>
+	</div>
+</body>
+</html>
