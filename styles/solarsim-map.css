@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Michroma|Roboto');
 * {
 	border: 1px solid blue;
 }
@@ -26,9 +27,11 @@ html, body {
 	margin: auto 100px;
 }
 
-.content .container h2 {
+h2 {
 	margin-top: 150px;
 	color: black;
+	font-family: 'Roboto', sans-serif;
+	font-weight: lighter;
 }
 /* Header*/
 .header {
