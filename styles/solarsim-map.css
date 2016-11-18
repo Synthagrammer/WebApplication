@@ -10,12 +10,13 @@ html, body {
 
 .container {
 	max-width: 950px;
+	min-width: 450px;
 	margin: 0 auto;
 }
 
 /*Display information*/
 .location {
-	height: 300px;
+	height: 350px;
 }
 .content {
 	height: 1000px;
@@ -24,6 +25,12 @@ html, body {
 
 }
 
+.location p {
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: lighter;
+	text-align: left;
+}
 h3 {
 	color: #0884fe;
 	font-size: 20px;
