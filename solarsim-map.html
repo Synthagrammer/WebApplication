@@ -111,7 +111,7 @@
 			<!--Header for section -->
 			<h2>Spectrafy's spectral map of Canada</h2>
 			<h3>Check out the data!</h3>
-
+			
 			<!-- use the boostrap to create and show information regarding each site. site specific information -->
 			<div class="row">
         		<div class="col-md-4">
@@ -124,21 +124,33 @@
         				
         				<form>
 					    <div class="checkbox">
-					      	<label><input type="checkbox" value="" style="font-family:'Roboto';">Direct irradiance</label>
+					      	<label><input type="checkbox" value="DNI" name="ottawa">Direct irradiance</label>
 					    </div>
 					    <div class="checkbox">
-					      	<label><input type="checkbox" value="">Direct spectrum</label>
+					      	<label><input type="checkbox" value="D spectrum"name="ottawa">Direct spectrum</label>
 					    </div>
 					    <div class="checkbox">
-					      	<label><input type="checkbox" value="">Global irradiance</label>
+					      	<label><input type="checkbox" value="GHI"name="ottawa">Global irradiance</label>
 					    </div>
 					    <div class="checkbox">
-					      	<label><input type="checkbox" value="">Global spectrum</label>
+					      	<label><input type="checkbox" value="G Spectrum"name="ottawa">Global spectrum</label>
 					    </div>
 					    <div class="checkbox">
-					      	<label><input type="checkbox" value="">Atmopheric data</label>
+					      	<label><input type="checkbox" value="AODo3"name="ottawa">Atmopheric data</label>
 					    </div>
-					  </form>
+					  	</form>
+
+					  	<script type="text/javascript">
+					    $(document).ready(function() {
+					        $("button").click(function(){
+					            var favorite = [];
+					            $.each($("input[name='ottawa']:checked"), function(){            
+					                favorite.push($(this).val());
+					            });
+					            alert("Show dashboard for: " + favorite.join(", "));
+					        });
+					    });
+						</script>
 
         				<button type="button" class="btn btn-primary btn-md" style="background-color:#0884fe; border:1px solid black;"><a href="#">View Dashboard</a></button>
         			</div>
