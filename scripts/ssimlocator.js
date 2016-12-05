@@ -3,15 +3,15 @@ $(document).ready(function() {
 	$("button").click(function(){
 	    if (this.name == "Ottawa") {
 		    var data = [];
+		    var date = [];
 		    var city = this.name;
-		    $.each($("input[name='" + city + "']:checked"), function(){            
+		    $.each($("input[name='value']:checked"), function(){            
 		    	data.push($(this).val());
 		    });
-	    
-	    	alert("Show dashboard for: " + data.join(", "));
-	    	location.href = "/dashboard?" + this.name + "&" + data.join("&");
-	    } else {
-	    	alert(this.name + " has not been set up yet.")
-	    }
+		    $.each($("input[name='daterange']"), function(){            
+		    	date.push($(this).val());
+		    });
+	    	location.href = "/dashboard?" + "*&*" + city + "*&*" + data.join("*,*") + "*&*" + date.join("_");
+	    } 
 	});
 });

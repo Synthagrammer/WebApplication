@@ -1,28 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <!-- Meta data -->
+ <meta charset="utf-8"> <!-- set character encoding for the document -->
+ <meta http-equiv="x-ua-compatible" content="ie=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <!-- Description -->
+ <meta name="description" content="CanSSIM spectral map of Canada measured with Spectrafy's SolarSIM-D2 and SolarSIM-G1 products.">
+ <!-- Search engine bots -->
+ <meta name="robots" content="index,follow,noodp"><!-- All Search Engines -->
+ <meta name="googlebot" content="index,follow"><!-- Google Specific -->
+ <!-- Tells Google not to show the sitelinks search box -->
+ <meta name="google" content="nositelinkssearchbox">
+ <!-- Tells Google not to provide a translation for this page -->
+ <meta name="google" content="notranslate">
+ <!-- Verify ownership for Google Search Console -->
+ <meta name="google-site-verification" content="verification_token">
+ 
  <!-- Title of website	-->
  <title>SolarSIM sensor locations across Canada</title>
  <link rel="icon" type="image/png" href="http://spectrafy.com/_favicon.png">
- <meta charset="utf-8">
 
+ <!-- Import Bootstrap style -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <!-- Add javascript to the website -->
+ <script type="text/javascript" src="scripts/ssimlocator.js?v=3"></script>
  <!-- Import Bootstrap style -->
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  	
+ <!-- Include Required Prerequisites -->
+ <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+ <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+ <!-- Include Date Range Picker -->
+ <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+ <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
  <!-- Add custom css file over bootstrap	-->
- <link rel="stylesheet" type="text/css" href="styles/ssimlocator.css?v=3">
+ <link rel="stylesheet" type="text/css" href="styles/ssimlocator.css?v=9">
 
 </head>
 
 <body>
  <!-- Create a header that spans the top of the page with a logo on the left and nav bar on the right-->
  <div class="header">
-  <div class="container">
-   <div class="logo"> 
+  <div class="container"> <!-- Container for the content -->
+   <div class="logo">  <!-- Add logo to the header-->
     <h1>Spectrafy</h1>
    </div>
-   <div class="nav">
+   <div class="nav"> <!-- Create nav bar with linkds--> 
     <ul>
 	 <li><a href="http://spectrafy.com/careers">Careers</a></li>
 	 <li><a href="http://spectrafy.com/category/news">News</a></li>
@@ -34,167 +60,144 @@
  </div>
  <!-- Creating a section that will hold the google maps with specific locations-->
  <div class="googlemap">
-		<div class="container">
-			<div id="map"></div>
-			<!-- Script that will generate the map and place markers a specific locations-->
-		    <script>
-		      function initMap() {
-		        var ottawa = {lat: 45.4215, lng: -75.697};
-		        var pei = {lat: 45.2382, lng: -63.131};
-		        var toronto = {lat: 43.653, lng: -79.3832};
-		        var cabridgebay = {lat: 69.116, lng: -105.059};
-		        var quebec = {lat: 45.476, lng: -75.7013};
-		        var bc = {lat: 48.782, lng: -123.164};
-		        var calgary = {lat: 51.048, lng: -114.070};
+  <div class="container">
+   <h2>CanSSIM spectral map of Canada</h2>
+   <p>Spectrafy, with the help of funding from the Government of Canada, has set out to provide a spectral map of Canada! Each location, highlighted in the map below, equiped with the <a href="http://spectrafy.com/products/solarsim-d2">SolarSIM D-2</a> and <a href="http://spectrafy.com/products/solarsim-g">SolarSIM G</a> from <span>Spectrafy</span>, along with a pyranometer from Hukseflux. </p>
+   <h3>Check out the dashboard!</h3>
 
-		        var map = new google.maps.Map(document.getElementById('map'), {
-		          zoom: 3,
-		          center: {lat:59, lng:-90}
-		        });
+   <div id="map"></div>
+	<!-- Script that will generate the map and place markers a specific locations-->
+	<script>
+		function initMap() {
+		var ottawa = {lat: 45.4215, lng: -75.697};
+		var pei = {lat: 45.2382, lng: -63.131};
+		var toronto = {lat: 43.653, lng: -79.3832};
+		var cabridgebay = {lat: 69.116, lng: -105.059};
+		var quebec = {lat: 45.681, lng: -73.437};
+		var bc = {lat: 48.782, lng: -123.164};
+		var calgary = {lat: 51.048, lng: -114.070};
 
-		        var marker = new google.maps.Marker({
-		          animation: google.maps.Animation.DROP,
-		          label:"Ottawa, ON",
-		          position: ottawa,		    
-		          map: map
-		        });
-		        var marker = new google.maps.Marker({
-		        	animation: google.maps.Animation.DROP,
-		        	label:"Charlottetown, PEI",
-		          	position: pei,
-		          	map: map
-		        });
-		        var marker = new google.maps.Marker({
-		          animation: google.maps.Animation.DROP,
-		          label:"Toronto, ON",
-		          position: toronto,
-		          map: map
-		        });
-		        var marker = new google.maps.Marker({
-		          animation: google.maps.Animation.DROP,
-		          label:"Cambridge Bay, NU",
-		          position: cabridgebay,
-		          map: map
-		        });
-		        var marker = new google.maps.Marker({
-		          animation: google.maps.Animation.DROP,
-		          label:"Gatineau, QC",
-		          position: quebec,
-		          map: map
-		        });
-		        var marker = new google.maps.Marker({
-		          animation: google.maps.Animation.DROP,
-		          label:"Saturna Island, BC",
-		          position: bc,
-		          map: map
-		        });
-		        var marker = new google.maps.Marker({
-		          animation: google.maps.Animation.DROP,
-		          label:"Calgary, AB",
-		          position: calgary,
-		          map: map
-		        });
-		        
-		      }
-		    </script>
-		    <script async defer
-		    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3EsKYUYTRfsEBGOi5CiAjHFhCmp1oN04&callback=initMap">
-		    </script>
-		</div>
- </div>
+		var map = new google.maps.Map(document.getElementById('map'), {
+		  zoom: 4,
+		  center: {lat:59.5, lng:-95}
+		});
+
+		var contentString = '<div><h1>Test</h1></div>'
+		var infowindow_ott = new google.maps.InfoWindow({
+          content: contentString
+        });
+		var marker_ott = new google.maps.Marker({
+		  animation: google.maps.Animation.DROP,
+		  position: ottawa,		    
+		  map: map
+		});
+		marker_ott.addListener('click', function() {
+          infowindow.open(map, marker_ott)
+        });
+
+		var marker_pei = new google.maps.Marker({
+			animation: google.maps.Animation.DROP,
+			label:"Charlottetown, PEI",
+		  	position: pei,
+		  	map: map
+		});
+		var marker_tor = new google.maps.Marker({
+		  animation: google.maps.Animation.DROP,
+		  label:"Toronto, ON",
+		  position: toronto,
+		  map: map
+		});
+		var marker_nu = new google.maps.Marker({
+		  animation: google.maps.Animation.DROP,
+		  label:"Cambridge Bay, NU",
+		  position: cabridgebay,
+		  map: map
+		});
+		var marker_qc = new google.maps.Marker({
+		  animation: google.maps.Animation.DROP,
+		  label:"Varenne, QC",
+		  position: quebec,
+		  map: map
+		});
+		var marker_bc = new google.maps.Marker({
+		  animation: google.maps.Animation.DROP,
+		  label:"Saturna Island, BC",
+		  position: bc,
+		  map: map
+		});
+		var marker_ab = new google.maps.Marker({
+		  animation: google.maps.Animation.DROP,
+		  label:"Calgary, AB",
+		  position: calgary,
+		  map: map
+		});
+
+		}
+		</script>
+		<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3EsKYUYTRfsEBGOi5CiAjHFhCmp1oN04&callback=initMap">
+		</script>
+   </div>
+  </div>
 
  <!--Create a section that will show the information for each test site and allow users to view dashboard-->
  <div class="content">
-  <div class="container"> <!--Header for section -->
-   <h2>Spectrafy's spectral map of Canada</h2>
-   <h3>Check out the data!</h3>
-			
-   <!-- use the boostrap to create and show information regarding each site. site specific information -->
+  <div class="container"> <!--Header for section -->		
    <div class="row">
-   	
-   	<!-- Ottawa -->
     <div class="col-md-4"> 
-     <div class="location">
-      <h4>Ottawa</h4>  
-      <p>Installation date:</p>     				
-      <p style="text-align:center">11 November 2016</p>
-      <p>Data available:</p>      					
-      
-      <form> <!-- Display available data -->
-	   <div class="checkbox"><label><input type="checkbox" value="DNI" name="Ottawa">Direct irradiance</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="DNI_spectrum"name="Ottawa">Direct spectrum</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="GHI"name="Ottawa">Global irradiance</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="GHI_spectrum"name="Ottawa">Global spectrum</label></div>
-	    <div class="checkbox"><label><input type="checkbox" value="atm" name="Ottawa">Atmopheric data</label></div>
+    <div class="location">
+   	 <h4>Select Data</h4>
+   	  <form> <!-- Display available data -->
+	   <div class="checkbox"><label><input type="checkbox" value="dni_irradiance" name="value">Direct Normal Irradiance</label></div>
+	   <div class="checkbox"><label><input type="checkbox" value="dni_spectrum" name="value">Direct Normal Spectrum</label></div>
+	   <div class="checkbox"><label><input type="checkbox" value="ghi_irradiance" name="value">Global Irradiance</label></div>
+	   <div class="checkbox"><label><input type="checkbox" value="ghi_spectrum" name="value">Global Spectrum</label></div>
+	   <div class="checkbox"><label><input type="checkbox" value="aod" name="value">Aerosol Optical Depth</label></div>
+	   <div class="checkbox"><label><input type="checkbox" value="o3_transmission" name="value">Ozone Transmission</label></div>
+	   <div class="checkbox"><label><input type="checkbox" value="h2o_transmission" name="value">Water Vapour Transmission</label></div>
 	  </form>
+   	</div>
+   	</div> 
 
-      <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #0884fe; font-size: 20px;" name="Test"><a href="#">View Dashboard</a></button>
-     </div>
+   	<div class="col-md-4"> 
+   	<div class="location">
+   	 <h4>Select Data Range</h4>
+   	 <p><br></p>
+   	 <input class="daterange" type="text" name="daterange" style="width:100%; height:50px; font-family: 'Roboto', sans-serif; font-size: 18px;" value="11/12/2016/1:30:PM - 11/12/2016/2:00:PM" />
+	 <script type="text/javascript">
+	 $(function() {
+	    $('input[name="daterange"]').daterangepicker({
+	        timePicker: true,
+	        timePickerIncrement: 1,
+	        locale: {
+	            format: 'MM/DD/YYYY/h:mm:A'
+	        },
+	        eventHandlers : {
+            'apply.daterangepicker' : function() {  
+                console.log($scope.dateRange);          
+            }
+        }
+	    });
+	 });
+	 </script>
+    </div>
     </div>
 
-    <!-- Gatineau -->
-	<div class="col-md-4">
-	 <div class="location">
-	  <h4>Gatineau</h4>
-	  <p>Installation date:</p>     				
-      <p style="text-align:center">NA</p>
-      <p>Data available:</p>      					
-      
-      <form> <!-- Display available data -->
-	   <div class="checkbox"><label><input type="checkbox" value="DNI" name="Gatineau">Direct irradiance</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="D_spectrum"name="Gatineau">Direct spectrum</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="GHI"name="Gatineau">Global irradiance</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="G_spectrum"name="Gatineau">Global spectrum</label></div>
-	    <div class="checkbox"><label><input type="checkbox" value="atm" name="Gatineau">Atmopheric data</label></div>
-	  </form>
-
-	  <button name="Gatineau" type="button" class="btn btn-primary btn-md disabled" style="background-color:#0884fe; border:1px solid #0884fe; font-size: 20px;" name="Test"><a href="#">View Dashboard</a></button>
-	 </div>
-	</div>
-
-	<!-- Charlottetown -->
-	<div class="col-md-4">
-	 <div class="location">
-	  <h4>Charlottetown</h4>
-
-	  <button name="Gatineau" type="button" class="btn btn-primary btn-md disabled" style="background-color:#0884fe; border:1px solid #0884fe; font-size: 20px;" onclick=><a href="#">View Dashboard</a></button>
-
-	 </div>
-	</div>
-   </div>
-
-   <div class="row">
-    <div class="col-md-4">
-     <div class="location">
-      <h4>Toronto</h4>
+    <div class="col-md-4"> 
+    <div class="location">
+   	 <h4>Select Location</h4>
+   	 <div class="btn-group-vertical">
+	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Ottawa</button>
+	     <button name="Varenne" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Varenne</button>
+	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Charlottetown</button>
+	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Toronto</button>
+	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Calgary</button>
+	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Saturna Island</button>
+	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Cambridge Bay</button>
      </div>
-	</div>
-	<div class="col-md-4">
-     <div class="location">
-      <h4>Cambridge Bay</h4>
-     </div>
-	</div>
-	<div class="col-md-4">
-     <div class="location">
-      <h4>Saturna Island</h4>
-     </div>
-	</div>
-   </div>
-
-   <div class="row">
-    <div class="col-md-4">
-     <div class="location">
-      <h4>Calgary</h4>
-     </div>
-	</div>
-   </div>		
+    </div>
+    </div>  
   </div>
  </div>
-
- <!-- Import Bootstrap style -->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <!-- Add javascript to the website -->
- <script type="text/javascript" src="scripts/ssimlocator.js?"></script>
 </body>
 </html>

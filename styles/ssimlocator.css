@@ -9,20 +9,19 @@ html, body {
 }
 
 .container {
-	max-width: 950px;
+	max-width: 1300px;
 	min-width: 450px;
 	margin: 0 auto;
 }
 
 /*Display information*/
 .location {
-	height: 400px;
+	height: 460px;
 }
 .content {
 	height: 1000px;
 	position: relative;
-	top:100px;
-
+	top:320px;
 }
 
 form {
@@ -31,9 +30,15 @@ form {
 	font-weight: lighter;
 	text-align: left;
 	padding-left: 30px;
-	padding-bottom: 10px;
+	padding-bottom: 20px;
+
 }
 
+.daterange {
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	font-weight: lighter;
+}
 .location p {
 	font-size: 20px;
 	font-family: 'Roboto', sans-serif;
@@ -62,18 +67,25 @@ h4 {
 
 /* Google maps section*/
 #map {
-    height: 600px;
-    margin: 0;
+    height: 700px;
+    margin-left: 16px;
+    margin-right: 16px;
 }
 
 .googlemap {
-	height: 600px;
+	height: 700px;
 	background-color: #fff;
 	position: relative;
 	top:100px;
 	margin: 0;
 }
-
+p{
+	text-align: left;
+	color: black;
+	font-family: 'Roboto', sans-serif;
+	font-weight: lighter;
+	font-size: 20px;
+}
 h2 {
 	color: black;
 	font-family: 'Roboto', sans-serif;
@@ -82,7 +94,6 @@ h2 {
 	font-size: 36px;
 	text-align: left;
 	margin: 10px 0px;
-	
 }
 
 /* Header and navogation bar*/
@@ -104,6 +115,7 @@ h2 {
 	color: white;
 	font-size: 36px;
 	font-family: 'Michroma',sans-serif;
+	padding-top: 10px;
 }
 
 .nav {
@@ -117,7 +129,7 @@ h2 {
 	padding: 35px 10px;
 	color: white;
 	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: lighter;
 }
 
@@ -125,6 +137,16 @@ a {
 	text-decoration: none;
 	color: white;
 }
+
+p a {
+	text-decoration: none;
+	color: #0884fe;
+}
+
+p span {
+	font-family: 'Michroma',sans-serif;
+}
+
 a:hover {
 	text-decoration: none;
 	color: black;
