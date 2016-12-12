@@ -9,8 +9,7 @@ html, body {
 }
 
 .container {
-	max-width: 1300px;
-	min-width: 450px;
+	width: 1000px;
 	margin: 0 auto;
 }
 
@@ -21,7 +20,7 @@ html, body {
 .content {
 	height: 1000px;
 	position: relative;
-	top:320px;
+	top:400px;
 }
 
 form {
@@ -58,13 +57,21 @@ h3 {
 h4 {
 	background-color:#0884fe;
 	color: white;
-	height: 35px;
+	height: 35px;	
 	font-family: 'Roboto',sans-serif;
-	font-size: 22px;
+	font-weight: lighter;
+	font-size: 25px;
 	padding-top: 5px;
+	border-radius: 5px;
 }
 
-
+.checkbox-text {
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: lighter;
+	text-align: left;
+	margin-left:-15px;
+}
 /* Google maps section*/
 #map {
     height: 700px;
@@ -85,6 +92,7 @@ p{
 	font-family: 'Roboto', sans-serif;
 	font-weight: lighter;
 	font-size: 20px;
+	line-height: 1.7em; 
 }
 h2 {
 	color: black;

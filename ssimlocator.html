@@ -37,7 +37,7 @@
  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
  <!-- Add custom css file over bootstrap	-->
- <link rel="stylesheet" type="text/css" href="styles/ssimlocator.css?v=9">
+ <link rel="stylesheet" type="text/css" href="styles/ssimlocator.css?v=2">
 
 </head>
 
@@ -62,76 +62,117 @@
  <div class="googlemap">
   <div class="container">
    <h2>CanSSIM spectral map of Canada</h2>
-   <p>Spectrafy, with the help of funding from the Government of Canada, has set out to provide a spectral map of Canada! Each location, highlighted in the map below, equiped with the <a href="http://spectrafy.com/products/solarsim-d2">SolarSIM D-2</a> and <a href="http://spectrafy.com/products/solarsim-g">SolarSIM G</a> from <span>Spectrafy</span>, along with a pyranometer from Hukseflux. </p>
+   <p><span>Spectrafy</span> and the Government of Canada have set out to provide a spectral map of Canada! Each of the seven locations are equiped with the <a href="http://spectrafy.com/products/solarsim-d2">SolarSIM D-2</a> and <a href="http://spectrafy.com/products/solarsim-g">SolarSIM G</a> from <span>Spectrafy</span>, along with a pyranometer from Hukseflux. </p>
    <h3>Check out the dashboard!</h3>
 
    <div id="map"></div>
 	<!-- Script that will generate the map and place markers a specific locations-->
 	<script>
 		function initMap() {
-		var ottawa = {lat: 45.4215, lng: -75.697};
-		var pei = {lat: 45.2382, lng: -63.131};
-		var toronto = {lat: 43.653, lng: -79.3832};
-		var cabridgebay = {lat: 69.116, lng: -105.059};
-		var quebec = {lat: 45.681, lng: -73.437};
-		var bc = {lat: 48.782, lng: -123.164};
-		var calgary = {lat: 51.048, lng: -114.070};
-
+		// Set up map
 		var map = new google.maps.Map(document.getElementById('map'), {
 		  zoom: 4,
 		  center: {lat:59.5, lng:-95}
 		});
-
-		var contentString = '<div><h1>Test</h1></div>'
-		var infowindow_ott = new google.maps.InfoWindow({
-          content: contentString
-        });
+		// Add location and information
+		// Ottawa
+		var ottawa = {lat: 45.412826, lng: -75.694277};
 		var marker_ott = new google.maps.Marker({
 		  animation: google.maps.Animation.DROP,
-		  position: ottawa,		    
-		  map: map
+		  position: ottawa,	    
+		  map: map,
+		  clickable: true
 		});
-		marker_ott.addListener('click', function() {
-          infowindow.open(map, marker_ott)
-        });
-
+		marker_ott.info = new google.maps.InfoWindow({
+			content:"<h3>Ottawa, ON</h3><p>The test site in Ottawa is located at the <span>Spectrafy</span> HQ. The data is available as of December 11, 2016.</p>"
+		});
+		google.maps.event.addListener(marker_ott, 'click', function() {
+			marker_ott.info.open(map, marker_ott);
+		});
+		// Charlote town
+		var pei = {lat: 46.257160, lng: -63.139336};
 		var marker_pei = new google.maps.Marker({
 			animation: google.maps.Animation.DROP,
-			label:"Charlottetown, PEI",
 		  	position: pei,
-		  	map: map
+		  	map: map,
+		  	clickable: true
 		});
-		var marker_tor = new google.maps.Marker({
-		  animation: google.maps.Animation.DROP,
-		  label:"Toronto, ON",
-		  position: toronto,
-		  map: map
+		marker_pei.info = new google.maps.InfoWindow({
+			content:"<h3>Charlottetown, PEI</h3><p>The test site in Charlottetown will be located at uPEI. The installation date is set to be in the first quater of 2017.</p>"
 		});
-		var marker_nu = new google.maps.Marker({
-		  animation: google.maps.Animation.DROP,
-		  label:"Cambridge Bay, NU",
-		  position: cabridgebay,
-		  map: map
+		google.maps.event.addListener(marker_pei, 'click', function() {
+			marker_pei.info.open(map, marker_pei);
 		});
+		// Varrenne
+		var quebec = {lat: 45.626530, lng: -73.381606};
 		var marker_qc = new google.maps.Marker({
 		  animation: google.maps.Animation.DROP,
-		  label:"Varenne, QC",
 		  position: quebec,
-		  map: map
+		  map: map,
+		  clickable: true
 		});
-		var marker_bc = new google.maps.Marker({
-		  animation: google.maps.Animation.DROP,
-		  label:"Saturna Island, BC",
-		  position: bc,
-		  map: map
+		marker_qc.info = new google.maps.InfoWindow({
+			content:"<h3>Varennes, QC</h3><p>The test site in Varennes will be located at CanmetENERGY lab. The data is available as of December 16, 2016.</p>"
 		});
+		google.maps.event.addListener(marker_qc, 'click', function() {
+			marker_qc.info.open(map, marker_qc);
+		});
+		// Alberta
+		var calgary = {lat: 53.341413, lng: -113.730800};
 		var marker_ab = new google.maps.Marker({
 		  animation: google.maps.Animation.DROP,
-		  label:"Calgary, AB",
 		  position: calgary,
-		  map: map
+		  map: map,
+		  clickable: true
 		});
-
+		marker_ab.info = new google.maps.InfoWindow({
+			content:"<h3>Devon, AB</h3><p>The test site in Devon will be located at Devon Research Center. The installation date is set to be in the first quater of 2017.</p>"
+		});
+		google.maps.event.addListener(marker_ab, 'click', function() {
+			marker_ab.info.open(map, marker_ab);
+		});
+		// Cambridge bay
+		var cabridgebay = {lat: 69.127317, lng: -105.053457};
+		var marker_nu = new google.maps.Marker({
+		  animation: google.maps.Animation.DROP,
+		  position: cabridgebay,
+		  map: map,
+		  clickable: true
+		});
+		marker_nu.info = new google.maps.InfoWindow({
+			content:"<h3>Cambridge Bay, NU</h3><p>The test site in Cambridge Bay will be located at the Canadian High Artic Research Station. The installation date is set to be in the first quater of 2017.</p>"
+		});
+		google.maps.event.addListener(marker_nu, 'click', function() {
+			marker_nu.info.open(map, marker_nu);
+		});
+		// Saturna island
+		var bc = {lat: 48.775383, lng: -123.128425};
+		var marker_bc = new google.maps.Marker({
+		  animation: google.maps.Animation.DROP,
+		  position: bc,
+		  map: map,
+		  clickable: true
+		});
+		marker_bc.info = new google.maps.InfoWindow({
+			content:"<h3>Saturna Island, BC</h3><p>The test site in Saturna Island will be located at the Environment Canadian Reserach Station. The installation date is set to be in the first quater of 2017.</p>"
+		});
+		google.maps.event.addListener(marker_bc, 'click', function() {
+			marker_bc.info.open(map, marker_bc);
+		});
+		// Toronto
+		var toronto = {lat: 44.231666, lng: -79.781442};
+		var marker_tor = new google.maps.Marker({
+		  animation: google.maps.Animation.DROP,
+		  position: toronto,
+		  map: map,
+		  clickable: true
+		});
+		marker_tor.info = new google.maps.InfoWindow({
+			content:"<h3>Egbert, ON</h3><p>The test site in Egbert will be located at the Centre for Atmospheric Research Experiments. The installation date is set to be in the first quater of 2017.</p>"
+		});
+		google.maps.event.addListener(marker_tor, 'click', function() {
+			marker_tor.info.open(map, marker_tor);
+		});		
 		}
 		</script>
 		<script async defer
@@ -148,13 +189,13 @@
     <div class="location">
    	 <h4>Select Data</h4>
    	  <form> <!-- Display available data -->
-	   <div class="checkbox"><label><input type="checkbox" value="dni_irradiance" name="value">Direct Normal Irradiance</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="dni_spectrum" name="value">Direct Normal Spectrum</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="ghi_irradiance" name="value">Global Irradiance</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="ghi_spectrum" name="value">Global Spectrum</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="aod" name="value">Aerosol Optical Depth</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="o3_transmission" name="value">Ozone Transmission</label></div>
-	   <div class="checkbox"><label><input type="checkbox" value="h2o_transmission" name="value">Water Vapour Transmission</label></div>
+	   <div class="checkbox checkbox-text"><label><input type="checkbox" value="dni_irradiance" name="value">Direct Normal Irradiance</label></div>
+	   <div class="checkbox checkbox-text"><label><input type="checkbox" value="dni_spectrum" name="value">Direct Normal Spectrum</label></div>
+	   <div class="checkbox checkbox-text"><label><input type="checkbox" value="ghi_irradiance" name="value">Global Irradiance</label></div>
+	   <div class="checkbox checkbox-text"><label><input type="checkbox" value="ghi_spectrum" name="value">Global Spectrum</label></div>
+	   <div class="checkbox checkbox-text"><label><input type="checkbox" value="aod" name="value">Aerosol Optical Depth</label></div>
+	   <div class="checkbox checkbox-text"><label><input type="checkbox" value="o3_transmission" name="value">Ozone Transmission</label></div>
+	   <div class="checkbox checkbox-text"><label><input type="checkbox" value="h2o_transmission" name="value">Water Vapour Transmission</label></div>
 	  </form>
    	</div>
    	</div> 
@@ -163,14 +204,14 @@
    	<div class="location">
    	 <h4>Select Data Range</h4>
    	 <p><br></p>
-   	 <input class="daterange" type="text" name="daterange" style="width:100%; height:50px; font-family: 'Roboto', sans-serif; font-size: 18px;" value="11/12/2016/1:30:PM - 11/12/2016/2:00:PM" />
+   	 <input class="daterange" type="text" name="daterange" style="width:100%; height:50px; font-family: 'Roboto', sans-serif; font-size: 18px;" value="11/12/2016 1:30 PM - 11/12/2016T2:00:PM" />
 	 <script type="text/javascript">
 	 $(function() {
 	    $('input[name="daterange"]').daterangepicker({
 	        timePicker: true,
 	        timePickerIncrement: 1,
 	        locale: {
-	            format: 'MM/DD/YYYY/h:mm:A'
+	            format: 'MM/DD/YYYY hh:mm A'
 	        },
 	        eventHandlers : {
             'apply.daterangepicker' : function() {  
@@ -187,17 +228,38 @@
     <div class="location">
    	 <h4>Select Location</h4>
    	 <div class="btn-group-vertical">
-	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Ottawa</button>
-	     <button name="Varenne" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Varenne</button>
-	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Charlottetown</button>
-	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Toronto</button>
-	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Calgary</button>
-	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Saturna Island</button>
-	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#0884fe; border:1px solid #fff; font-size: 20px;" name="Test">Cambridge Bay</button>
+	     <button name="Ottawa" type="button" class="btn btn-primary btn-md " style="background-color:#333; border:1px solid #fff; font-size: 20px;">Ottawa</button>
+	     <button name="Varennes" type="button" class="btn btn-primary btn-md " style="background-color:#333; border:1px solid #fff; font-size: 20px;">Varennes</button>
+	     <button name="Charlottetown" type="button" class="btn btn-primary btn-md " style="background-color:#333; border:1px solid #fff; font-size: 20px;">Charlottetown</button>
+	     <button name="Egbert" type="button" class="btn btn-primary btn-md " style="background-color:#333; border:1px solid #fff; font-size: 20px;">Egbert</button>
+	     <button name="Devon" type="button" class="btn btn-primary btn-md " style="background-color:#333; border:1px solid #fff; font-size: 20px;">Devon</button>
+	     <button name="Saturna Island" type="button" class="btn btn-primary btn-md " style="background-color:#333; border:1px solid #fff; font-size: 20px;">Saturna Island</button>
+	     <button name="Cambridge Bay" type="button" class="btn btn-primary btn-md " style="background-color:#333; border:1px solid #fff; font-size: 20px;">Cambridge Bay</button>
      </div>
     </div>
     </div>  
+  	
+	 <div class="row">
+	 	<div class="col-md-1"></div>
+	 	<div class="col-md-2">
+	 		<a href="spectrafy.com"><img style="width:100%; padding-top:15px;"src="./images/Logo with motto.png"></a>
+	 	</div>
+	 	<div class="col-md-2">
+	 		<a href="http://www.upei.ca/"><img style="width:100%;"src="./images/uPEI.png"></a>
+	 	</div>
+	 	<div class="col-md-2">
+	 		<a href="http://www.nrcan.gc.ca/energy/offices-labs/canmet/varennes/5761"><img style="width:100%;"src="./images/canmetENERGY.jpg"> </a>
+	 	</div>
+	 	<div class="col-md-2">
+	 		<a href="https://www.ec.gc.ca/mges-ghgm/default.asp?lang=En&n=4F8F4C25-1"><img style="width:100%;"src="./images/canada-logo.png"> </a>
+	 	</div>
+	 	<div class="col-md-2">
+	 		<a href="https://weather.gc.ca/"><img style="width:100%; padding-top:15px;"src="./images/Environment_Canada_Logo.png"> </a>
+	 	</div> 	
+
+	 </div>
   </div>
  </div>
+
 </body>
 </html>
