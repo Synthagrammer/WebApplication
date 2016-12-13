@@ -1,4 +1,3 @@
-alert("eres3");
 // Get selected values from list
 $(document).ready(function() {
 	$("button").click(function(){
@@ -15,7 +14,7 @@ $(document).ready(function() {
 		    	// Check if live data is selected
 		    	if ($("input[name='live_daq']:checked")) {
 		    		// Create url	    		
-		    		location.href = "/dashboard?" + "location=" + city + "*&*date=live" + "*&*data=" + data.join("*,*");
+		    		location.href = "/dashboard?" + "location=" + city + "&date=live" + "&data=" + data.join("&data=") + "&done";
 		    	} else {
 		    		// Validate date range
 		    		var date = [];
@@ -33,7 +32,7 @@ $(document).ready(function() {
 				    	jEndDate = new Date();
 				    }
 			    	// Create URl	    		
-			    	location.href = "/dashboard?" + "location=" + city + "*&*date=" + jStartDate + "*,*" + jEndDate + "*&*data=" + data.join("*,*");
+			    	location.href = "/dashboard?" + "location=" + city + "&date=" + jStartDate + "&date=" + jEndDate + "&data=" + data.join("&data=") + "&done";
 		    	}
 		    }
 	    } 
